@@ -4,6 +4,12 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
+  def show
+    @article = Article.find(params[:id])
+
+    redirect_to root_path
+  end
+
   def create
     Article.create(article_attributes)
 

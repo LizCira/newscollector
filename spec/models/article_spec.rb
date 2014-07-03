@@ -1,5 +1,10 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe Article, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  it "has a valid factory" do
+    FactoryGirl.create(:article).should be_valid
+  end
+
 end
