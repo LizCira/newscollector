@@ -1,15 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
+    @articles = Article.all.sort_by(&:id)
     @article = Article.new
   end
-
-  # def show
-  #   @article = Article.find(params[:id])
-
-  #   redirect_to root_path
-  # end
 
   def create
     Article.create(article_attributes)
