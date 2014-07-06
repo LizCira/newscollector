@@ -17,4 +17,10 @@
                            :id => article.id},
                            :method => :delete %>
 
+<%= button_to "edit", {:controller => :articles,
+                           :action => 'edit',
+                           :id => article.id},
+                           :method => :get %>
+
+
 <% end %>

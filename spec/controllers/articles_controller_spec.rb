@@ -15,14 +15,6 @@ RSpec.describe ArticlesController, :type => :controller do
       end
     end
 
-    # describe "GET #show" do
-    #   it "finds an article by ID and assigns that article to @article" do
-    #     article = FactoryGirl.create(:article)
-    #     get :show, id: article
-    #     assigns(:article).should eq(article)
-    #   end
-    # end
-
     describe "POST create" do
         it "creates a new article in database" do
           expect{
@@ -30,6 +22,30 @@ RSpec.describe ArticlesController, :type => :controller do
             }.to change(Article,:count).by(1)
           end
         end
+
+  describe 'PUT update' do
+    before :each do @article = FactoryGirl.create(:article, title: "News")
+    end
+
+    # it "located the requested @article" do
+    #   binding.pry
+    #   put :update, id: @article, article: FactoryGirl.attributes_for(:article)
+    #   assigns(:article).should eq(@article) end
+
+ it "changes @article's attributes" do
+  put :update, id:
+    @article, article: FactoryGirl.attributes_for(:article, title: "Not news")
+    @article.reload
+    @article.title.should eq("Not news")
+  end
+
+  it "redirects to articles#index" do
+    put :update, id: @article, article: FactoryGirl.attributes_for(:article)
+    response.should redirect_to root_path
+  end
+
+end
+
 
     describe 'DELETE destroy' do
       before :each do @article = FactoryGirl.create(:article)

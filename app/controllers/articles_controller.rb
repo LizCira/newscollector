@@ -16,7 +16,15 @@ class ArticlesController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
 
+  def update
+    article = Article.find(params[:id])
+    article.update_attributes(article_attributes)
+    redirect_to root_path
+  end
 
 
   def destroy
@@ -27,7 +35,7 @@ class ArticlesController < ApplicationController
  private
 
   def article_attributes
-    params.require(:article).permit(:title, :url, :description, :image)
+    params.require(:article).permit(:title, :url, :description, :image, :id)
   end
 
 

@@ -1,0 +1,18 @@
+
+<h3>Edit:</h3>
+<%= form_for @article do |f| %>
+  <%= f.text_field :title, :value => "#{@article.title}" %>
+  <%= f.text_field :url, :value => "#{@article.url}" %>
+  <%= f.text_field :image, :value => "#{@article.image}" %>
+  <%= f.text_field :description, :value => "#{@article.description}" %>
+  <%= f.submit %>
+<% end %>
+
+<h2>Current article: </h3>
+<p><%= link_to @article.title, @article.url %></p>
+
+<p> <%= image_tag @article.image %> </p>
+
+<p> <%= @article.description %> </p>
+
+
