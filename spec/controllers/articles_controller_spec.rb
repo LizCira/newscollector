@@ -15,13 +15,13 @@ RSpec.describe ArticlesController, :type => :controller do
       end
     end
 
-    describe "GET #show" do
-      it "finds an article by ID and assigns that article to @article" do
-        article = FactoryGirl.create(:article)
-        get :show, id: article
-        assigns(:article).should eq(article)
-      end
-    end
+    # describe "GET #show" do
+    #   it "finds an article by ID and assigns that article to @article" do
+    #     article = FactoryGirl.create(:article)
+    #     get :show, id: article
+    #     assigns(:article).should eq(article)
+    #   end
+    # end
 
     describe "POST create" do
         it "creates a new article in database" do
@@ -30,5 +30,19 @@ RSpec.describe ArticlesController, :type => :controller do
             }.to change(Article,:count).by(1)
           end
         end
+
+    describe 'DELETE destroy' do
+      before :each do @article = FactoryGirl.create(:article)
+      end
+
+      it "deletes the article from database" do
+        expect{ delete :destroy, id: @article }.to change(Article,:count).by(-1)
+        end
+
+      it "redirects to articles#index" do
+        delete :destroy, id: @article
+        response.should redirect_to root_path
+       end
+      end
 
 end

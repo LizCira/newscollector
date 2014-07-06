@@ -6,12 +6,15 @@
 
 <p><%= link_to article.title, article.url %></p>
 
-<%= article.url %>
-
 <p> <%= image_tag article.image %> </p>
 
 <p> <%= article.description %> </p>
 
 <p> Posted at: <%= article.created_at %>
+
+<%= button_to "delete", {:controller => :articles,
+                           :action => 'destroy',
+                           :id => article.id},
+                           :method => :delete %>
 
 <% end %>
