@@ -1,17 +1,14 @@
 <%= form_for @article, url: "/articles" do |f| %>
 
-  <p><strong>New Planet Name:</strong></p>
-  <p><%= f.text_field :name %></p>
-  </p>
+  <p><strong>Today's article:</strong></p>
+
+  <p>Headline:</p>
+  <p><%= f.text_field :title %></p>
+  <p>Article URL:</p>
+  <p><%= f.text_field :url %></p>
   <p>Image url: </p>
-  <p><%= f.text_field :image_url %></p>
-  </p>
-  <p>
-  <p>Diameter: </p>
-  <p><%= f.text_field :diameter %></p>
-  <p>Mass: </p>
-  <p><%= f.text_field :mass %></p>
-  <p>Does it support life? (T, F)</p>
-  <p><%= f.select :life, [['False','False'], ['True','True']]%></p>
+  <p><%= f.text_field :image %></p>
+  <p>Notes/ comments: </p>
+  <p><%= f.text_field :description %></p>
   <p><%= f.submit "Create!" %></p>
 <% end %>

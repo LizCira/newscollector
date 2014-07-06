@@ -23,5 +23,12 @@ RSpec.describe ArticlesController, :type => :controller do
       end
     end
 
+    describe "POST create" do
+        it "creates a new article in database" do
+          expect{
+            post :create, article: FactoryGirl.attributes_for(:article)
+            }.to change(Article,:count).by(1)
+          end
+        end
 
 end
