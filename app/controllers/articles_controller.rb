@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all.sort_by(&:id)
     @article = Article.new
+    @comment = Comment.new
   end
 
   def create
@@ -19,7 +20,6 @@ class ArticlesController < ApplicationController
     article.update_attributes(article_attributes)
     redirect_to root_path
   end
-
 
   def destroy
     Article.find(params[:id]).destroy

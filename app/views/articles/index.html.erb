@@ -4,11 +4,11 @@
 
 <p><% @articles.reverse_each do |article| %></p>
 
-<p><%= link_to article.title, article.url %></p>
-
-<p> <%= image_tag article.image %> </p>
+<h2><%= link_to article.title, article.url %></h2>
 
 <p> <%= article.description %> </p>
+
+<p> <%= image_tag article.image %> </p>
 
 <p> Posted at: <%= article.created_at %>
 
@@ -22,5 +22,28 @@
                            :id => article.id},
                            :method => :get %>
 
+<h3><%=article.comments.length %> comments on this article: </h3>
+<p><% article.comments.each do |comment| %></p>
 
+<p> <%= comment.comment_text %> </p>
+<p> -- <%= comment.author %> </p>
+
+<%= button_to "Delete Comment", {:controller => :comments,
+                           :action => 'destroy',
+                           :article_id => article.id,
+                           :id => comment.id},
+                           :method => :delete %>
+
+<% end %>
+
+<h3>Add a comment on the article "<%= article.title %>":</h3>
+
+<%= form_for @comment, url: "/articles/#{article.id}/comments" do |f| %>
+
+  <p><%= f.text_field :comment_text, :placeholder => "Comment" %></p>
+  <p><%= f.text_field :author, :placeholder => "Author" %></p>
+  <p><%= f.hidden_field :article_id, :value => article.id %></p>
+
+<p><%= f.submit "Submit comment" %></p>
+<% end %>
 <% end %>
