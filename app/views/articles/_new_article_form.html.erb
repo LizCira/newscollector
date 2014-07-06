@@ -1,0 +1,17 @@
+<%= form_for @article, url: "/articles" do |f| %>
+
+  <p><strong>New Planet Name:</strong></p>
+  <p><%= f.text_field :name %></p>
+  </p>
+  <p>Image url: </p>
+  <p><%= f.text_field :image_url %></p>
+  </p>
+  <p>
+  <p>Diameter: </p>
+  <p><%= f.text_field :diameter %></p>
+  <p>Mass: </p>
+  <p><%= f.text_field :mass %></p>
+  <p>Does it support life? (T, F)</p>
+  <p><%= f.select :life, [['False','False'], ['True','True']]%></p>
+  <p><%= f.submit "Create!" %></p>
+<% end %>

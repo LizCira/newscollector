@@ -7,4 +7,6 @@ RSpec.describe Article, :type => :model do
     FactoryGirl.create(:article).should be_valid
   end
 
+  it { should have_many(:comments) }
+
 end

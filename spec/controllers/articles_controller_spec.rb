@@ -9,25 +9,19 @@ RSpec.describe ArticlesController, :type => :controller do
         expect(assigns(:articles)).to eq([article])
       end
 
-    it "renders the :index view" do
+      it "renders the :index view" do
         get :index
         response.should render_template :index
       end
     end
 
     describe "GET #show" do
-      it "assigns the requested article to @article" do
+      it "finds an article by ID and assigns that article to @article" do
         article = FactoryGirl.create(:article)
         get :show, id: article
         assigns(:article).should eq(article)
       end
     end
 
-  # describe "POST create" do
-  #     it "creates a new contact" do
-  #       expect{ post :create, contact: Factory.attributes_for(:contact) }.to
-  #       change(Contact,:count).by(1)
-  #     end
-  # end
 
 end
