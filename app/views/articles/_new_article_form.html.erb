@@ -1,14 +1,19 @@
 <%= form_for @article, url: "/articles" do |f| %>
 
-  <p><strong>Today's article:</strong></p>
+  <h3>Add today's article:</h3>
 
   <p>Headline:</p>
-  <p><%= f.text_field :title %></p>
+  <p><%= f.text_field :title, size: 40, class: "article_title" %></p>
   <p>Article URL:</p>
-  <p><%= f.text_field :url %></p>
-  <p>Image url: </p>
-  <p><%= f.text_field :image %></p>
+  <p><%= f.text_field :url, size: 40 %></p>
+  <p>Image URL: </p>
+  <p><%= f.text_field :image, size: 40 %></p>
+
+  <div class="article_note_field">
   <p>Further notes: </p>
-  <p><%= f.text_field :description %></p>
+  <p><%= f.text_area :description, cols: 80, rows: 13 %></p>
+  </div>
+
   <p><%= f.submit "Create!" %></p>
+
 <% end %>

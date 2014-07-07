@@ -2,27 +2,30 @@
 
 <%= render "new_article_form" %>
 
+<h3>Saved articles:</h3>
+
 <p><% @articles.reverse_each do |article| %></p>
 
 <h2><%= link_to article.title, article.url %></h2>
+
+<p> Posted at: <%= article.created_at %>
 
 <p> <%= article.description %> </p>
 
 <p> <%= image_tag article.image %> </p>
 
-<p> Posted at: <%= article.created_at %>
-
-<%= button_to "delete", {:controller => :articles,
-                           :action => 'destroy',
-                           :id => article.id},
-                           :method => :delete %>
-
-<%= button_to "edit", {:controller => :articles,
+<%= button_to "Edit Article", {:controller => :articles,
                            :action => 'edit',
                            :id => article.id},
                            :method => :get %>
 
-<h3><%=article.comments.length %> comments on this article: </h3>
+<%= button_to "Delete Article", {:controller => :articles,
+                           :action => 'destroy',
+                           :id => article.id},
+                           :method => :delete %>
+
+
+<h3><%=article.comments.length %> comments on this article. </h3>
 <p><% article.comments.each do |comment| %></p>
 
 <p> <%= comment.comment_text %> </p>
@@ -36,7 +39,7 @@
 
 <% end %>
 
-<h3>Add a comment on the article "<%= article.title %>":</h3>
+<h3>Comment on the article "<%= article.title %>":</h3>
 
 <%= form_for @comment, url: "/articles/#{article.id}/comments" do |f| %>
 
