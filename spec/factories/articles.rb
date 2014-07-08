@@ -4,5 +4,6 @@ FactoryGirl.define do
       f.url  Faker::Internet.url.to_s
       f.description "some insightful insights"
       f.image "src a picture"
+      f.id 1
   end
 end
